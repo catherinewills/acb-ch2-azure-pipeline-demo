@@ -15,4 +15,4 @@ https:
 #    insecure: "false"  
   reconnection:
     frequency: "3000"
-    attempts: "3" 
+    attempts: "3"
