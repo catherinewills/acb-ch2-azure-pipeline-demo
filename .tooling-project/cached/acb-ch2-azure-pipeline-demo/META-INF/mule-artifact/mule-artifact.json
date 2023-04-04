@@ -1,0 +1,26 @@
+{
+  "configs": [
+    "acb-ch2-azure-pipeline-demo.xml",
+    "acb-ch2-azure-pipeline.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "com.mycompany:acb-ch2-azure-pipeline-demo:1.0.0-SNAPSHOT",
+  "minMuleVersion": "4.4.0",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "acb-ch2-azure-pipeline-demo.xml",
+        "log4j2.xml",
+        "acb-ch2-azure-pipeline.xml"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+    xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+    xmlns:http="http://www.mulesoft.org/schema/mule/http"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+    http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+    http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+     
+<sub-flow name="get-testFlow-sub-flow" 
+    <ee:transform doc:name="PAYLOAD" >
+        <ee:message >
+            <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+[
+	{
+	  "id": 1,
+	  "category": "tech",
+	  "item": "iPhone",
+	  "price": 549 
+	},
+	{
+	  "id": 2,
+	  "category": "clothing",
+	  "item": "shirt",
+	  "price": 15 
+	},
+	{
+	  "id": 3,
+	  "category": "jewelry",
+	  "item": "necklace",
+	  "price": 33 
+	}
+]]]></ee:set-payload>
+      </ee:message>
+    </ee:transform>   
+    <ee:transform doc:name="Item 1 + Item 2 + Item 3" >
+      <ee:message >
+        <ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+[
+	{
+	  "totalPrice": payload.price[0] + payload.price[1] + payload.price[2]  
+	}
+]]]></ee:set-payload>
+      </ee:message>
+    </ee:transform>
+    <logger level="INFO" doc:name="Logger" message="#[payload]" />
+  </sub-flow>
+
+  <sub-flow name="post-testFlow-sub-flow" >
+    <ee:transform doc:name="PAYLOAD" >
+      <ee:message >
+        <ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+[
+	{
+	  "id": 1,
+	  "category": "tech",
+	  "item": "iPhone",
+	  "price": 549 
+	},
+	{
+	  "id": 2,
+	  "category": "clothing",
+	  "item": "shirt",
+	  "price": 15 
+	},
+	{
+	  "id": 3,
+	  "category": "jewelry",
+	  "item": "necklace",
+	  "price": 33 
+	}
+]]]></ee:set-payload>
+      </ee:message>
+    </ee:transform>
+    <ee:transform doc:name="Item 1 + Item 2" >
+      <ee:message >
+        <ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+[
+	{
+	  "totalPrice": payload.price[0] + payload.price[1]
+	}
+]]]></ee:set-payload>
+      </ee:message>
+    </ee:transform>
+    <logger level="INFO" doc:name="Logger" message="#[payload]" />
+  </sub-flow>
+  
+  <sub-flow name="put-testFlow-sub-flow" >
+    <ee:transform doc:name="PAYLOAD" >
+      <ee:message >
+        <ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+[
+	{
+	  "id": 1,
+	  "category": "tech",
+	  "item": "iPhone",
+	  "price": 549 
+	},
+	{
+	  "id": 2,
+	  "category": "clothing",
+	  "item": "shirt",
+	  "price": 15 
+	},
+	{
+	  "id": 3,
+	  "category": "jewelry",
+	  "item": "necklace",
+	  "price": 33 
+	}
+]]]></ee:set-payload>
+      </ee:message>
+    </ee:transform>
+    <ee:transform doc:name="Item 1 + Item 3" >
+      <ee:message >
+        <ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+[
+	{
+	  "totalPrice": payload.price[0] + payload.price[2]
+	}
+]]]></ee:set-payload>
+      </ee:message>
+    </ee:transform>
+    <logger level="INFO" doc:name="Logger" message="#[payload]" />
+  </sub-flow>
+</mule>
+

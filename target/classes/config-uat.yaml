@@ -1,0 +1,6 @@
+# ACB CH2 Azure CICD Pipeline Demo DEV Configuration
+
+# Autodiscovery Configuration
+api:
+  id: ""
+  basepath: "/api/v1"

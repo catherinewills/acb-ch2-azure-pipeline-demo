@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+    xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+    xmlns:http="http://www.mulesoft.org/schema/mule/http"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+    http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+    http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <http:listener-config name="acb-ch2-azure-pipeline-httpListenerConfig">
+        <http:listener-connection host="${https.secure.host}" port="${https.secure.port}" protocol="HTTP">
+            <!-- <tls:context>
+                <tls:key-store type="jks" path="${https.keystore.path}" alias="${https.keystore.alias}" keyPassword="${https.keystore.keypass}" password="${https.keystore.password}" />
+            </tls:context> -->
+        </http:listener-connection>
+    </http:listener-config>     
+
+    <!-- <apikit:config name="acb-ch2-azure-pipeline-config" api="resource::37513a5c-61c8-4566-8c30-c9d2a08150d8:acb-ch2-azure-pipeline:1.0.0:raml:zip:acb-ch2-azure-pipeline.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" /> -->
+
+</mule>
